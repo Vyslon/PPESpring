@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="has-background-light" lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GSB</title>
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+
+
+<body class="has-navbar-fixed-top">
+    <nav class="navbar is-transparent is-fixed-top" id="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="{% static 'img/gsb-logo.png' %}" alt="GSB">
+            </a>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="">Accueil</a>
+                <a class="navbar-item" href="/choixFichesFrais">
+                    Valider les fiches de frais
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <span class="navbar-item pr-4">
+                            [[${#httpServletRequest.remoteUser}]]
+                        </span>
+                        <form th:action="@{/logout}" method="post">
+                            <input class="button is-primary"  type="submit" value="Log out"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

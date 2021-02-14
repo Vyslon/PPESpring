@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="has-background-light" lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GSB</title>
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+<div th:if="${param.error}">
+    <div class="notification is-danger is-light is-italic error-message">
+        Login ou mot de passe incorrect.
+    </div>
+</div>
+<div th:if="${param.logout}">
+    <div class="notification is-info is-bold">
+        Vous avez été déconnecté.
+    </div>
+</div>
+
+<section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <form th:action="@{/login}"  method="post" class="box">
+                        <div class="field">
+                            <label class="label">Login</label>
+                            <div class="control">
+                                <input type="text" class="input" name="username" required>
+                </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Mot de passe</label>
+                            <div class="control">
+                                <input type="password" placeholder="*******" class="input" name="password" required>
+                </span>
+                            </div>
+                        </div>
+                        <div class="field" ><input class="button is-success" type="submit" value="Connexion"/></div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
